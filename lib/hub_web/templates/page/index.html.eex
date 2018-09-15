@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-2 pull-right">
+    <ul class="pull-left" id="users"></ul>
+      <%= for user <- Hub.Repo.all(Hub.Users.User) do %>
+          <%= if user.chat_id != 1  do %>
+            <li><%= link user.chat_id, to: "/?chat_id=#{user.chat_id}" %></li>
+          <% end %>
+      <% end %>
+  </div>
+
+  <div class="col-md-10 pull-left">
+    <ul class="list-group mt-5" id="messages"></ul>
+
+    <form class="input-group mt-3 hidden" id="new-message">
+      <input type="text" class="form-control" id="message-content" name="message" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
