@@ -49,11 +49,22 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
+#config :hub, Hub.Repo,
+#  adapter: Ecto.Adapters.Postgres,
+#  username: "postgres",
+#  password: "postgres",
+#  database: "hub_dev",
+#  hostname: "localhost",
+#  port: 5432,
+#  pool_size: 10
 config :hub, Hub.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "hub_dev",
-  hostname: "localhost",
-  port: 5432,
-  pool_size: 10
+       adapter: Ecto.Adapters.Postgres,
+       username: "postgres",
+       password: "postgres",
+       database: "hub_prod",
+       pool_size: 15,
+       hostname: "db"
+
+config :hub, :rabbitmq,
+       host: "rabbitmq",
+       port: 5672

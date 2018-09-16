@@ -12,5 +12,5 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN mix deps.get && mix deps.compile
-RUN cd assets && npm install
+RUN cd assets && npm install && node node_modules/brunch/bin/brunch build
 RUN cd /usr/src/app
