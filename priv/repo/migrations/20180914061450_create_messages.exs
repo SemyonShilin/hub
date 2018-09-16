@@ -4,7 +4,6 @@ defmodule Hub.Repo.Migrations.CreateMessages do
   def change do
     create table(:messages) do
       add :body, :string
-      add :answered, :boolean
       add :chat_room_id, :integer
 
       timestamps()

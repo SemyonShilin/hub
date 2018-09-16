@@ -32,7 +32,7 @@ defmodule Hub.Queue.Producer do
   end
 
   def rabbitmq_connect do
-    case Connection.open(port: 5672) do
+    case Connection.open(Application.get_env(:hub, :rabbitmq)) do
       {:ok, connection} ->
         Process.monitor(connection.pid)
         {:ok, channel} = Channel.open(connection)
@@ -40,7 +40,7 @@ defmodule Hub.Queue.Producer do
 
         %{channel: channel, connection: connection}
       {:error, _} ->
-        :timer.sleep(10000)
+        :timer.sleep(100)
         rabbitmq_connect()
     end
   end

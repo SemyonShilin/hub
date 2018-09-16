@@ -3,7 +3,7 @@
     <ul class="pull-left" id="users"></ul>
       <%= for user <- Hub.Repo.all(Hub.Users.User) do %>
           <%= if user.chat_id != 1  do %>
-            <li><%= link user.chat_id, to: "/?chat_id=#{user.chat_id}" %></li>
+            <li><%= link user.username, to: "/?chat_id=#{user.chat_id}" %></li>
           <% end %>
       <% end %>
   </div>

@@ -55,4 +55,5 @@ config :hub, Hub.Repo,
   password: "postgres",
   database: "hub_dev",
   hostname: "localhost",
+  port: 5432,
   pool_size: 10

@@ -15,7 +15,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :hub, HubWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
+  url: [host: "localhost", port: 4001],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -61,4 +61,18 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+config :hub, HubWeb.Endpoint,
+       secret_key_base: "ex/lbo0epVw6rtoT3Z88CxAXuhGuct7JyMAD/rtgCBjcIkuR2g9nzcS2YkkBKWdS"
+
+# Configure your database
+config :hub, Hub.Repo,
+       adapter: Ecto.Adapters.Postgres,
+       username: "postgres",
+       password: "postgres",
+       database: "hub_prod",
+       pool_size: 15,
+       hostname: "db"
+
+config :hub, :rabbitmq,
+       host: "rabbitmq",
+       port: 5672

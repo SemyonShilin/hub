@@ -3,7 +3,6 @@ defmodule Hub.Messages.Message do
 
   schema "messages" do
     field :body, :string
-    field :answered, :boolean
     field :chat_room_id, :integer
     belongs_to :user, Hub.Users.User
 
